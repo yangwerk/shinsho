@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>心象塔羅日誌</title>
+<title>心象塔羅日誌・普普風</title>
 <meta name="description" content="結合塔羅占卜與心情紀錄的個人儀表板：每天抽牌、記錄心情與情緒強度，並從歷史紀錄中整理出反覆出現的生活議題。">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%2219%22%20fill%3D%22%23171a35%22%20stroke%3D%22%23c9a24a%22%20stroke-width%3D%221.5%22/%3E%3Cpath%20d%3D%22M21.6%2010.6A9.6%209.6%200%201%200%2021.6%2029.4A7.8%207.8%200%201%201%2021.6%2010.6Z%22%20fill%3D%22%23e2c275%22/%3E%3Cpath%20d%3D%22M27%2013.5l.9%202.2%202.2.9-2.2.9-.9%202.2-.9-2.2-2.2-.9%202.2-.9z%22%20fill%3D%22%23e2c275%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%2219%22%20fill%3D%22%230077d0%22%20stroke%3D%22%230077d0%22%20stroke-width%3D%221.5%22/%3E%3Cpath%20d%3D%22M23%2011.2A9.2%209.2%200%201%200%2023%2028.8A9.2%209.2%200%200%201%2023%2011.2Z%22%20fill%3D%22%23ffd56e%22/%3E%3Cpath%20d%3D%22M27%2013.5l.9%202.2%202.2.9-2.2.9-.9%202.2-.9-2.2-2.2-.9%202.2-.9z%22%20fill%3D%22%23ffd56e%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=LXGW+WenKai+TC:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap">
 <style>
 :root {
   /* Layout: a reading desk. Today's question and mood sit on the left; the spread is laid on an ink-blue cloth on the right. Almanac tabs hold the charts, the insights and the journal. */
@@ -598,6 +598,249 @@ table.matrix td.cell.strong { color: var(--sq-ink); }
 .cloth.shuffling .deck-btn .deck-stack i:nth-child(odd) { animation: riffleL .38s ease-in-out 4 alternate; }
 .cloth.shuffling .deck-btn .deck-stack i:nth-child(even) { animation: riffleR .38s ease-in-out 4 alternate; }
 .tag-sub { color: var(--muted); }
+
+/* ============ 普普風：鈷藍夜空 × 暖杏奶油 ============ */
+:root {
+  /* Layout: same reading desk, restyled. The cloth becomes a night-sky dome with a scalloped hem; panels become soft cream cushions; buttons are cobalt pills. */
+  color-scheme: light;
+  --bg: #fcf2eb;
+  --surface: #fffaf5;
+  --surface-2: #f9e8d9;
+  --surface-3: #f2dac4;
+  --ink: #213a70;
+  --ink-2: #4b5b82;
+  --muted: #858aa1;
+  --line: #f0dccb;
+  --line-strong: #e2c6ad;
+  --title: #0077d0;
+  --blue: #0077d0;
+  --apricot: #f19466;
+  --sun: #f7b943;
+  --gold: #0077d0;
+  --gold-ink: #0068b8;
+  --gold-soft: #e2eefb;
+  --accent: #0077d0;
+  --on-accent: #ffffff;
+  --focus: #0077d0;
+  --cloth: #1b56b6;
+  --cloth-2: #3c8ce6;
+  --cloth-ink: #fffaf3;
+  --cloth-muted: #d6e5fb;
+  --cloth-gold: #ffd56e;
+  --cloth-line: rgba(255, 255, 255, .6);
+  --grid: #f1e2d4;
+  --axis: #dcc4ae;
+  --bar-neutral: #b9c6e3;
+  --series-1: #0077d0;
+  --dv-n4: #1276ce; --dv-n3: #4d97e6; --dv-n2: #83b7f1; --dv-n1: #b8d2f0; --dv-z: #eae5e1;
+  --dv-p1: #ecc6b4; --dv-p2: #e79f7a; --dv-p3: #d7763f; --dv-p4: #b95201;
+  --face-ink: #213a70;
+  --face-n4: #3d8ee6; --face-n3: #6aa9ee; --face-n2: #9cc6f4; --face-n1: #c9ddf5; --face-z: #eee8e2;
+  --face-p1: #f4d3c2; --face-p2: #f5b08b; --face-p3: #f19466; --face-p4: #ee7a44;
+  --sq-1: #eaf2fc; --sq-2: #cfe2f8; --sq-3: #a7caf2; --sq-4: #6ea8e8; --sq-5: #2f86dc; --sq-ink: #ffffff;
+  --shadow: 0 14px 36px rgba(24, 70, 150, .07);
+  --shadow-lg: 0 24px 60px rgba(20, 50, 110, .22);
+  --font-display: "Chiron GoRound TC", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  --font-latin: "Outfit", "Chiron GoRound TC", "PingFang TC", sans-serif;
+  --font-body: "Chiron GoRound TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  --radius: 28px;
+  --radius-sm: 16px;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --spark-sun: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0C11 7 13 9 20 10C13 11 11 13 10 20C9 13 7 11 0 10C7 9 9 7 10 0Z' fill='%23ffd56e'/%3E%3C/svg%3E");
+  --spark-cream: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0C11 7 13 9 20 10C13 11 11 13 10 20C9 13 7 11 0 10C7 9 9 7 10 0Z' fill='%23fffaf3'/%3E%3C/svg%3E");
+  --spark-accent: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0C11 7 13 9 20 10C13 11 11 13 10 20C9 13 7 11 0 10C7 9 9 7 10 0Z' fill='%23f7b943'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0d2657; --surface: #14326b; --surface-2: #1a3b7a; --surface-3: #234890;
+    --ink: #fcf2eb; --ink-2: #cdd9f2; --muted: #93a7d2; --line: #28498c; --line-strong: #3a5fa8; --title: #fcf2eb;
+    --gold: #ffd56e; --gold-ink: #ffd56e; --gold-soft: rgba(255, 213, 110, .16);
+    --accent: #fcf2eb; --on-accent: #0d2657; --focus: #ffd56e;
+    --cloth: #0a2150; --cloth-2: #1f58b8; --cloth-muted: #bcd2f5;
+    --grid: #213f7c; --axis: #3a5fa8; --bar-neutral: #5a78b8; --series-1: #8cc3ff;
+    --dv-n4: #70b4fe; --dv-n3: #5091d7; --dv-n2: #4671a2; --dv-n1: #3e546e; --dv-z: #363e48;
+    --dv-p1: #6a4a3a; --dv-p2: #995e3e; --dv-p3: #ca7445; --dv-p4: #f6925c;
+    --sq-1: #1c3a74; --sq-2: #26508f; --sq-3: #3569ad; --sq-4: #4f88cc; --sq-5: #7fb0ea; --sq-ink: #0d2657;
+    --good-ink: #5fd35f;
+    --shadow: 0 14px 36px rgba(0, 0, 0, .22);
+    --shadow-lg: 0 24px 60px rgba(0, 0, 0, .45);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d2657; --surface: #14326b; --surface-2: #1a3b7a; --surface-3: #234890;
+  --ink: #fcf2eb; --ink-2: #cdd9f2; --muted: #93a7d2; --line: #28498c; --line-strong: #3a5fa8; --title: #fcf2eb;
+  --gold: #ffd56e; --gold-ink: #ffd56e; --gold-soft: rgba(255, 213, 110, .16);
+  --accent: #fcf2eb; --on-accent: #0d2657; --focus: #ffd56e;
+  --cloth: #0a2150; --cloth-2: #1f58b8; --cloth-muted: #bcd2f5;
+  --grid: #213f7c; --axis: #3a5fa8; --bar-neutral: #5a78b8; --series-1: #8cc3ff;
+  --dv-n4: #70b4fe; --dv-n3: #5091d7; --dv-n2: #4671a2; --dv-n1: #3e546e; --dv-z: #363e48;
+  --dv-p1: #6a4a3a; --dv-p2: #995e3e; --dv-p3: #ca7445; --dv-p4: #f6925c;
+  --sq-1: #1c3a74; --sq-2: #26508f; --sq-3: #3569ad; --sq-4: #4f88cc; --sq-5: #7fb0ea; --sq-ink: #0d2657;
+  --good-ink: #5fd35f;
+  --shadow: 0 14px 36px rgba(0, 0, 0, .22);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, .45);
+}
+
+/* ---------- 字與標題 ---------- */
+body { letter-spacing: .03em; }
+.display, .view-head h2 { color: var(--title); font-weight: 700; letter-spacing: .12em; }
+.display::after, .view-head h2::after { content: ""; display: inline-block; width: .5em; height: .5em; margin-left: .3em; vertical-align: .55em; background: var(--spark-accent) center / contain no-repeat; }
+.label { color: var(--title); letter-spacing: .12em; }
+.hint, .date-line { letter-spacing: .1em; }
+.panel h3 { color: var(--title); letter-spacing: .12em; }
+.sub { letter-spacing: .05em; }
+
+/* ---------- 頂部列 ---------- */
+.topbar { border-bottom: 0; }
+.brand-name { color: var(--title); letter-spacing: .16em; }
+.brand-sub { color: var(--ink-2); letter-spacing: .22em; }
+.brand:hover { background: transparent; }
+.brand:hover .brand-name { color: var(--apricot); }
+.tabs { background: transparent; border: 0; gap: 4px; }
+.tab { color: var(--title); font-weight: 600; letter-spacing: .12em; padding: 8px 16px; }
+.tab:hover { background: var(--surface-2); color: var(--title); }
+.tab[aria-selected="true"] { background: var(--accent); color: var(--on-accent); box-shadow: none; }
+.tab[aria-selected="true"] svg { color: var(--on-accent); }
+.icon-btn { width: 42px; height: 42px; background: var(--surface-2); border: 0; color: var(--title); }
+.icon-btn:hover { background: var(--surface-3); color: var(--title); }
+.streak { background: var(--surface-2); border: 0; color: var(--title); padding: 7px 13px; }
+.streak svg { color: var(--apricot); }
+.streak b { color: var(--title); font-family: var(--font-latin); }
+.demo-banner { background: var(--surface-2); border: 0; border-radius: 24px; color: var(--title); padding: 12px 14px 12px 20px; }
+.demo-banner svg { color: var(--apricot); }
+
+/* ---------- 按鈕、標籤、輸入框 ---------- */
+.btn { border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--title); letter-spacing: .08em; }
+.btn:hover { border-color: var(--title); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { filter: brightness(1.08); border-color: var(--accent); }
+.btn-ghost { background: transparent; border-color: transparent; }
+.btn-ghost:hover { background: var(--surface-2); }
+.btn-danger { color: var(--critical); }
+.chip { background: var(--surface-2); border-color: transparent; color: var(--title); letter-spacing: .05em; }
+.chip:hover { border-color: var(--line-strong); color: var(--title); }
+.chip[aria-checked="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chip-suggest { background: transparent; border: 1.5px solid var(--line-strong); }
+.tag { background: var(--surface-2); border-color: transparent; color: var(--ink-2); }
+.tag-gold { background: var(--gold-soft); color: var(--gold-ink); }
+.link-btn { color: var(--title); }
+.link-btn:hover { background: var(--surface-2); }
+textarea, input[type="text"], input[type="search"], input[type="password"], select { background: var(--surface); border: 1.5px solid var(--line-strong); border-radius: 20px; }
+textarea:focus, input:focus, select:focus { border-color: var(--blue); box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 18%, transparent); }
+.seg { background: var(--surface-2); border: 0; padding: 4px; }
+.seg button { color: var(--title); letter-spacing: .06em; }
+.seg button[aria-checked="true"] { background: var(--accent); color: var(--on-accent); box-shadow: none; }
+
+/* ---------- 占卜頁左欄 ---------- */
+.mood, .spread { background: var(--surface); border: 1.5px solid var(--line); border-radius: 20px; }
+.mood[aria-checked="true"], .spread[aria-checked="true"] { border-color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue); background: var(--gold-soft); }
+.spread { color: var(--title); }
+.spread-pips i { border-color: var(--blue); border-radius: 3px; }
+.spread[aria-checked="true"] .spread-pips i { background: var(--blue); }
+.auto-card { background: var(--surface-2); border: 0; border-radius: 24px; }
+.auto-title b { color: var(--title); }
+.auto-badge { background: var(--surface); color: var(--title); }
+.auto-badge.manual { background: var(--surface); box-shadow: none; }
+.auto-why mark { background: var(--surface); color: var(--title); }
+.auto-why mark.soft { background: transparent; box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+.adjust-panel { background: var(--surface-2); border: 0; border-radius: 24px; }
+.intensity { background: var(--surface); border: 0; border-radius: 18px; }
+.ws-day.today { color: var(--title); }
+.ws-day.today .ws-empty { border-color: var(--blue); }
+
+/* ---------- 桌布：拱頂夜空、波浪下緣、星芒與光球 ---------- */
+.cloth {
+  border-radius: 999px 999px 34px 34px / 190px 190px 34px 34px;
+  padding: 60px clamp(16px, 3vw, 30px) 42px;
+  background:
+    var(--spark-sun) 13% 30% / 16px no-repeat,
+    var(--spark-cream) 86% 24% / 11px no-repeat,
+    var(--spark-sun) 91% 66% / 13px no-repeat,
+    var(--spark-cream) 7% 72% / 9px no-repeat,
+    var(--spark-cream) 25% 14% / 8px no-repeat,
+    var(--spark-cream) 70% 9% / 7px no-repeat,
+    var(--grain),
+    radial-gradient(circle at 90% 94%, rgba(176, 212, 255, .55), rgba(176, 212, 255, 0) 32%),
+    radial-gradient(circle at 4% 42%, rgba(176, 212, 255, .35), rgba(176, 212, 255, 0) 24%),
+    linear-gradient(173deg, transparent 74.6%, rgba(255, 255, 255, .45) 74.8%, transparent 75%),
+    linear-gradient(165deg, var(--cloth-2), var(--cloth) 80%);
+  box-shadow: none;
+  -webkit-mask: radial-gradient(20px at 50% calc(100% + 8px), #0000 97%, #000) 50% 100% / 50px 100% repeat-x;
+  mask: radial-gradient(20px at 50% calc(100% + 8px), #0000 97%, #000) 50% 100% / 50px 100% repeat-x;
+}
+.cloth::before { display: none; }
+.cloth-head { flex-direction: column; justify-content: center; text-align: center; gap: 10px; }
+.cloth-title { font-size: 20px; letter-spacing: .2em; color: var(--cloth-ink); padding-left: .2em; }
+.engine-pill { border: 1.5px solid rgba(255, 255, 255, .55); color: var(--cloth-ink); letter-spacing: .08em; }
+.slot-label { color: var(--cloth-ink); letter-spacing: .3em; }
+.slot-frame { border: 1.5px solid rgba(255, 255, 255, .55); border-radius: 16px; background: rgba(255, 255, 255, .07); }
+.slot-frame span { font-family: var(--font-latin); font-weight: 500; color: rgba(255, 255, 255, .6); }
+.slot-name small { color: var(--cloth-muted); }
+.card-face { border-radius: 12px; box-shadow: 0 12px 26px rgba(9, 34, 90, .35); }
+.deck-stack i { border-radius: 10px; box-shadow: 0 6px 16px rgba(9, 34, 90, .35); }
+.deck-btn .deck-stack i:last-child { animation-name: deckPulsePop; }
+@keyframes deckPulsePop { 0%, 100% { box-shadow: 0 6px 16px rgba(9, 34, 90, .35); } 50% { box-shadow: 0 6px 16px rgba(9, 34, 90, .35), 0 0 18px 3px rgba(255, 244, 214, .5); } }
+.deck-btn:hover .deck-stack i, .deck-btn:focus-visible .deck-stack i { box-shadow: 0 0 0 1.5px rgba(255, 250, 243, .85), 0 0 14px 2px rgba(255, 213, 110, .35), 0 8px 18px rgba(9, 34, 90, .35); }
+.deck-btn:hover .deck-stack i:last-child, .deck-btn:focus-visible .deck-stack i:last-child { box-shadow: 0 0 0 2px #fffaf3, 0 0 30px 9px rgba(255, 213, 110, .62), 0 10px 22px rgba(9, 34, 90, .45); }
+.deck-btn:focus-visible::after { box-shadow: 0 0 0 2px #fffaf3; }
+.deck-hint { color: var(--cloth-muted); letter-spacing: .08em; }
+.deck-hint b { color: var(--cloth-gold); }
+.fan-card { border-radius: 9px; box-shadow: 0 6px 14px rgba(9, 34, 90, .45); }
+.fan-card:hover, .fan-card:focus-visible { box-shadow: 0 0 0 2px #fffaf3, 0 0 18px 4px rgba(255, 213, 110, .5), 0 14px 24px rgba(9, 34, 90, .5); }
+.btn-cloth { color: var(--cloth-ink); border-color: rgba(255, 255, 255, .6); background: rgba(255, 255, 255, .06); }
+.btn-cloth:hover { border-color: #fffaf3; background: rgba(255, 255, 255, .14); }
+.pick-count { color: var(--cloth-muted); }
+.pick-count b { color: var(--cloth-gold); }
+
+/* ---------- 解讀面板 ---------- */
+.reading-panel { border: 0; border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+.rp-head { border-bottom: 1.5px solid var(--line); }
+.rp-foot { border-top: 1.5px solid var(--line); }
+.rp-q { color: var(--title); letter-spacing: .06em; }
+.md h4 { color: var(--title); letter-spacing: .18em; }
+.md h4::before { content: ""; width: 14px; height: 14px; flex: none; background: var(--spark-accent) center / contain no-repeat; }
+.md li::marker { color: var(--apricot); }
+.md blockquote { border-left: 0; padding: 14px 20px; background: var(--surface-2); border-radius: 22px; color: var(--title); letter-spacing: .06em; }
+
+/* ---------- 儀表板、洞察、日誌 ---------- */
+.panel { border: 0; background: var(--surface); box-shadow: var(--shadow); }
+.kpi { border: 0; background: var(--surface-2); border-radius: 24px; }
+.kpi-label { color: var(--ink-2); letter-spacing: .1em; }
+.kpi-value { color: var(--title); font-family: var(--font-latin); }
+.kpi-value small { font-family: var(--font-body); }
+.insight-head { border-bottom: 1.5px solid var(--line); }
+.insight-aside { background: var(--surface-2); border-left: 0; }
+.ia-value { color: var(--title); }
+.status { background: var(--surface-2); border: 0; }
+.kw { background: var(--surface-2); border: 0; color: var(--title); }
+.recur-item { border: 0; background: var(--surface-2); border-radius: 22px; }
+.cr-row:hover, .hbar-row:hover, .hbar-row:focus-visible { background: var(--surface-2); }
+.cr-count { color: var(--title); font-family: var(--font-latin); }
+.cal-head h3 { color: var(--title); letter-spacing: .12em; }
+.cal-cell { border-radius: 14px; background: var(--surface-2); }
+.cal-cell.today { box-shadow: inset 0 0 0 2px var(--blue); }
+.entry-btn { border-bottom: 1.5px solid var(--line); border-radius: 0; }
+.entry-btn:hover { background: var(--surface-2); }
+.entry-date b { color: var(--title); font-family: var(--font-latin); }
+.month-sep { color: var(--title); }
+.mini-card { border-radius: 5px; }
+
+/* ---------- 視窗、提示、底部導覽 ---------- */
+.modal { background: rgba(13, 38, 87, .45); }
+.modal-card { border: 0; border-radius: 28px; }
+.modal-head { border-bottom: 1.5px solid var(--line); }
+.set-group h4 { color: var(--title); letter-spacing: .16em; }
+.radio-card { border: 1.5px solid var(--line); border-radius: 20px; }
+.radio-card:has(input:checked) { border-color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue); }
+.tooltip { border: 0; border-radius: 16px; }
+.toast { background: var(--accent); color: var(--on-accent); letter-spacing: .06em; }
+.bottomnav { border-top: 0; box-shadow: 0 -10px 26px rgba(24, 70, 150, .08); }
+.bottomnav button { color: var(--ink-2); letter-spacing: .08em; }
+.bottomnav button[aria-selected="true"] { color: var(--title); background: var(--gold-soft); }
+.bottomnav button[aria-selected="true"] svg { color: var(--title); }
+.foot-note { color: var(--ink-2); letter-spacing: .06em; }
 
 </style>
 </head>
@@ -2032,6 +2275,42 @@ const Charts = (() => {
   }
 
   return { trend, hbars, weekday, sparkline, faceSVG, scaleLegend, Tip, el, mdLabel };
+})();
+
+/* ============ 普普風：牌面配色與牌背 ============ */
+(() => {
+  // 把原本古典金墨色的牌面，換成鈷藍、鵝黃與暖杏
+  const MAP = [
+    ['#2a2436', '#233f7c'], ['#c79f45', '#f5b64a'], ['#9c7a2e', '#e2834a'], ['#a8392f', '#e8674a'], ['#f7f1e3', '#fffaf3'],
+    ['#b3452c', '#e46a3f'], ['#2d5f9f', '#1f6fc9'], ['#8f6a00', '#c98a12'], ['#2f6c36', '#3a8a55'],
+    ['#f5ddd2', '#fde2d4'], ['#dbe5f3', '#dcebfc'], ['#f1e7c6', '#fcf0cf'], ['#dcebd9', '#e0f1de'], ['#f0e3c0', '#fbe7c6'],
+    ['#5a86c4', '#3d8ee6'], ['rgba(42,36,54,.35)', 'rgba(35,63,124,.28)'],
+    ['Cormorant Garamond, Palatino, serif', 'Outfit, sans-serif'], ['Cormorant Garamond, serif', 'Outfit, sans-serif'],
+    ['LXGW WenKai TC, Kaiti TC, STKaiti, serif', 'Chiron GoRound TC, PingFang TC, sans-serif'], [' font-style="italic"', '']
+  ];
+  const recolor = s => MAP.reduce((acc, [a, b]) => acc.split(a).join(b), s);
+  const face = Tarot.face, icon = Tarot.suitIcon;
+  Tarot.face = (card, opts) => recolor(face(card, opts));
+  Tarot.suitIcon = (suit, size) => recolor(icon(suit, size));
+
+  // 牌背：鈷藍漸層夜空、鵝黃新月、星芒與雲朵波浪
+  const f1 = n => Math.round(n * 10) / 10;
+  const star = (x, y, r, fill) => { const k = r * 0.14; return `<path d="M${x} ${f1(y - r)}C${f1(x + k)} ${f1(y - k)} ${f1(x + k)} ${f1(y - k)} ${f1(x + r)} ${y}C${f1(x + k)} ${f1(y + k)} ${f1(x + k)} ${f1(y + k)} ${x} ${f1(y + r)}C${f1(x - k)} ${f1(y + k)} ${f1(x - k)} ${f1(y + k)} ${f1(x - r)} ${y}C${f1(x - k)} ${f1(y - k)} ${f1(x - k)} ${f1(y - k)} ${x} ${f1(y - r)}Z" fill="${fill}"/>`; };
+  let cloud = 'M4 200L4 176';
+  for (let x = 4; x < 116; x += 16) cloud += `A8 8 0 0 1 ${x + 16} 176`;
+  cloud += 'L116 200Z';
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200"><defs><clipPath id="c"><rect width="120" height="200" rx="10"/></clipPath></defs>` +
+    `<g clip-path="url(#c)"><rect width="120" height="200" fill="#fcf2eb"/>` +
+    `<circle cx="102" cy="28" r="24" fill="#e2eefb"/><circle cx="14" cy="148" r="28" fill="#fbe3d3"/>` +
+    `<path d="${cloud}" fill="#dcebfc"/></g>` +
+    `<rect x="6" y="6" width="108" height="188" rx="7" fill="none" stroke="#0077d0" stroke-width="1.4"/>` +
+    `<rect x="9.5" y="9.5" width="101" height="181" rx="5" fill="none" stroke="#0077d0" stroke-opacity=".35" stroke-width=".7"/>` +
+    `<circle cx="60" cy="96" r="27" fill="#ffffff" stroke="#0077d0" stroke-width="1.3"/>` +
+    `<circle cx="60" cy="96" r="22" fill="none" stroke="#0077d0" stroke-opacity=".3" stroke-width=".8"/>` +
+    `<path d="M62 81.5A15 15 0 1 0 62 110.5A15 15 0 0 1 62 81.5Z" fill="#f7b943" stroke="#0077d0" stroke-width="1.1" stroke-linejoin="round"/>` +
+    star(71, 90, 5.5, '#0077d0') + star(30, 34, 5, '#f7b943') + star(92, 152, 4.5, '#0077d0') + star(24, 116, 3, '#0077d0') + star(96, 62, 3.2, '#f19466') + star(86, 34, 2.6, '#0077d0') +
+    `</svg>`;
+  Tarot.BACK_SVG = 'url("data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg) + '")';
 })();
 
 /* ============ 心象塔羅：主程式 ============ */
