@@ -166,7 +166,11 @@ textarea::placeholder, input::placeholder { color: var(--muted); }
 
 /* ---------- 今日占卜 ---------- */
 .reading-grid { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 28px; align-items: start; }
-.ritual { display: flex; flex-direction: column; gap: 22px; }
+.ritual { display: flex; flex-direction: column; gap: 18px; }
+.chips-scroll { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; padding: 1px 24px 2px 1px; margin-top: -2px; -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent); mask-image: linear-gradient(90deg, #000 86%, transparent); }
+.chips-scroll::-webkit-scrollbar { display: none; }
+.chips-scroll .chip { flex: none; white-space: nowrap; }
+.label-row .hint { font-variant-numeric: tabular-nums; }
 .ritual-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .date-line { font-size: 13px; color: var(--muted); letter-spacing: .08em; }
 .display { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.2vw, 36px); line-height: 1.2; margin: 2px 0 0; letter-spacing: .02em; }
@@ -211,7 +215,7 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
 .form-msg { margin: 0; font-size: 13px; color: var(--critical); min-height: 1.2em; }
 .locked .field { opacity: .55; pointer-events: none; }
 
-.cloth { position: relative; border-radius: 22px; padding: 18px clamp(14px, 2.4vw, 26px) 22px; color: var(--cloth-ink); min-height: 540px; display: flex; flex-direction: column; overflow: hidden; isolation: isolate;
+.cloth { position: relative; border-radius: 22px; padding: 18px clamp(14px, 2.4vw, 26px) 22px; color: var(--cloth-ink); min-height: 500px; display: flex; flex-direction: column; overflow: hidden; isolation: isolate;
   background:
     radial-gradient(1.3px 1.3px at 12% 18%, rgba(255, 240, 200, .6), transparent 70%),
     radial-gradient(1px 1px at 78% 12%, rgba(255, 240, 200, .5), transparent 70%),
@@ -226,9 +230,9 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
 .cloth-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .cloth-title { font-family: var(--font-display); font-size: 18px; color: var(--cloth-ink); letter-spacing: .08em; margin: 0; font-weight: 700; }
 .engine-pill { font-size: 11.5px; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(214, 178, 98, .45); color: var(--cloth-gold); white-space: nowrap; }
-.slots { display: flex; justify-content: center; gap: clamp(10px, 2vw, 22px); margin-top: 26px; }
+.slots { display: flex; justify-content: center; gap: clamp(10px, 2vw, 22px); margin-top: 20px; }
 .slot { display: flex; flex-direction: column; align-items: center; gap: 10px; width: var(--card-w); }
-.slots.single .slot { width: calc(var(--card-w) * 1.3); }
+.slots.single .slot { width: calc(var(--card-w) * 1.15); }
 .slot-label { font-size: 12px; letter-spacing: .24em; color: var(--cloth-gold); padding-left: .24em; }
 .slot-frame { width: 100%; aspect-ratio: 3 / 5; border-radius: 10px; border: 1px solid var(--cloth-line); display: grid; place-items: center; background: rgba(255, 255, 255, .025); }
 .slot-frame span { font-family: var(--font-latin); font-size: 28px; color: rgba(214, 178, 98, .4); }
@@ -244,7 +248,7 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
 .card3d.rev .card-front .card-svg { transform: rotate(180deg); }
 .card3d.land { animation: land .45s ease-out; }
 @keyframes land { from { transform: translateY(-26px) scale(.94); opacity: .3; } to { transform: none; opacity: 1; } }
-.deck-zone { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 14px; margin-top: 18px; min-height: 210px; }
+.deck-zone { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 14px; min-height: 196px; }
 .deck-stack { position: relative; width: 92px; aspect-ratio: 3 / 5; }
 .deck-stack i { position: absolute; inset: 0; border-radius: 8px; background: var(--card-back) center / 100% 100%; box-shadow: 0 6px 16px rgba(0, 0, 0, .35); }
 .deck-stack i:nth-child(1) { transform: translate(-6px, 5px) rotate(-4deg); }
@@ -255,7 +259,7 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
 .shuffling .deck-stack i:nth-child(even) { animation: riffleR .38s ease-in-out 4 alternate; }
 @keyframes riffleL { to { transform: translate(-46px, -6px) rotate(-12deg); } }
 @keyframes riffleR { to { transform: translate(46px, -8px) rotate(12deg); } }
-.deck-hint { font-size: 13.5px; color: var(--cloth-muted); text-align: center; margin: 0; max-width: 34ch; }
+.deck-hint { font-size: 13.5px; color: var(--cloth-muted); text-align: center; margin: 0; max-width: 42ch; }
 .fan-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .fan { position: relative; width: 100%; height: calc(var(--fan-h, 110px) + 46px); }
 .fan-card { position: absolute; left: 50%; bottom: 8px; width: var(--fan-w, 66px); height: var(--fan-h, 110px); margin-left: calc(var(--fan-w, 66px) / -2); border: 0; padding: 0; border-radius: 7px; background: var(--card-back) center / 100% 100%; box-shadow: 0 6px 14px rgba(0, 0, 0, .45); transform-origin: 50% 130%; transform: translate(var(--x), var(--y)) rotate(var(--r)); transition: transform .22s ease, opacity .3s ease, box-shadow .2s; animation: dealIn .5s var(--d, 0s) backwards; }
@@ -555,11 +559,12 @@ table.matrix th.mh .face { margin: 0 auto 2px; width: 18px; height: 18px; }
 .adjust-panel { display: flex; flex-direction: column; gap: 14px; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-2); }
 .adjust-panel .intensity { background: var(--surface); }
 .adjust-row { display: flex; flex-direction: column; gap: 8px; }
-.is-locked #note { opacity: .6; }
+#question { min-height: 7.6em; }
+.rp-q.long { font-size: 17px; line-height: 1.65; }
 .is-locked .auto-card { opacity: .85; }
 
 /* ---------- 牌堆按鈕 ---------- */
-.deck-btn { position: relative; display: grid; place-items: center; border: 0; background: none; padding: 18px 28px 12px; border-radius: 18px; cursor: pointer; -webkit-tap-highlight-color: transparent; color: inherit; }
+.deck-btn { position: relative; display: grid; place-items: center; border: 0; background: none; padding: 12px 28px 6px; border-radius: 18px; cursor: pointer; -webkit-tap-highlight-color: transparent; color: inherit; }
 .deck-btn .deck-stack { width: 100px; transition: transform .3s ease; }
 .deck-btn .deck-stack i { transition: transform .3s ease, box-shadow .3s ease; }
 .deck-btn .deck-stack i:last-child { animation: deckPulse 2.8s ease-in-out infinite; }
@@ -664,14 +669,17 @@ table.matrix td.cell.strong { color: var(--sq-ink); }
           <h1 class="display">今天想問什麼？</h1>
         </div>
         <div class="field">
-          <label class="label" for="question">你的問題</label>
-          <textarea id="question" rows="3" maxlength="120" placeholder="例如：這個月的工作重心，應該放在哪裡？"></textarea>
-          <div class="field-foot"><span id="qCount">0 / 120</span></div>
-          <div class="chips" id="promptChips" aria-label="問題靈感"></div>
+          <div class="label-row"><label class="label" for="question">你的問題與感受</label><span class="hint" id="qCount">0 / 300</span></div>
+          <textarea id="question" rows="4" maxlength="300" placeholder="寫下想問的事，也可以說說發生了什麼、心裡有什麼感受。&#10;例如：這週被主管退件兩次，覺得好挫折……我該怎麼調整自己的步調？"></textarea>
+          <div class="chips chips-scroll" id="promptChips" aria-label="問題靈感，點一下加入提問"></div>
         </div>
         <div class="field">
-          <label class="label" for="note">此刻的感受<span class="label-opt">選填，寫得越多，判讀越準</span></label>
-          <textarea id="note" rows="2" maxlength="300" placeholder="例如：今天被主管退件兩次，覺得好累……"></textarea>
+          <span class="label" id="spreadLabel">牌陣</span>
+          <div class="spreads" id="spreadOpts" role="radiogroup" aria-labelledby="spreadLabel">
+            <button class="spread" type="button" role="radio" data-spread="single"><span class="spread-pips"><i></i></span>單張指引<small>今天最需要的訊息</small></button>
+            <button class="spread" type="button" role="radio" data-spread="ppf"><span class="spread-pips"><i></i><i></i><i></i></span>時間之流<small>過去・現在・未來</small></button>
+            <button class="spread" type="button" role="radio" data-spread="sca"><span class="spread-pips"><i></i><i></i><i></i></span>行動指引<small>現況・阻礙・建議</small></button>
+          </div>
         </div>
         <div class="field">
           <div class="label-row"><span class="label">心情判讀</span><button type="button" class="link-btn" id="adjustBtn" aria-expanded="false" aria-controls="adjustPanel">調整</button></div>
@@ -691,14 +699,6 @@ table.matrix td.cell.strong { color: var(--sq-ink); }
               <div class="chips" id="catChips" role="radiogroup" aria-labelledby="catLabel"></div>
             </div>
             <div class="row"><button type="button" class="btn btn-sm" id="autoResetBtn" hidden>改回自動判讀</button></div>
-          </div>
-        </div>
-        <div class="field">
-          <span class="label" id="spreadLabel">牌陣</span>
-          <div class="spreads" id="spreadOpts" role="radiogroup" aria-labelledby="spreadLabel">
-            <button class="spread" type="button" role="radio" data-spread="single"><span class="spread-pips"><i></i></span>單張指引<small>今天最需要的訊息</small></button>
-            <button class="spread" type="button" role="radio" data-spread="ppf"><span class="spread-pips"><i></i><i></i><i></i></span>時間之流<small>過去・現在・未來</small></button>
-            <button class="spread" type="button" role="radio" data-spread="sca"><span class="spread-pips"><i></i><i></i><i></i></span>行動指引<small>現況・阻礙・建議</small></button>
           </div>
         </div>
       </div>
@@ -1440,6 +1440,20 @@ const Engine = (() => {
     };
   }
 
+  // 把使用者寫的一段話拆成「提問」與「感受」：以問號結尾、或最後一句帶疑問詞的算提問，其餘算感受
+  const ASK_RE = /(嗎|呢|如何|怎麼|怎樣|什麼|為什麼|為何|哪裡|哪個|哪一|該不該|要不要|會不會|能不能|是不是|有沒有|適不適合|可不可以)/;
+  function splitAsk(text) {
+    const t = String(text || '').trim();
+    if (!t) return { ask: '', feel: '' };
+    const parts = (t.match(/[^。！？!?；;\n…]+[。！？!?；;…]*/g) || [t]).map(p => p.trim()).filter(Boolean);
+    const ask = [], feel = [];
+    parts.forEach(p => {
+      const isAsk = /[？?]$/.test(p) || (!/[。！!；;…]$/.test(p) && ASK_RE.test(p));
+      (isAsk ? ask : feel).push(p);
+    });
+    return { ask: ask.join(''), feel: feel.join('') };
+  }
+
   /* ---------- 單次占卜的離線解讀 ---------- */
   function positionFrame(key, card, rev, o) {
     switch (key) {
@@ -1525,8 +1539,10 @@ const Engine = (() => {
   }
 
   function localReading({ question, category, spread, cards, mood, intensity, note, seedKey, moodSource, moodCues }) {
-    const q = (question || '').trim() || DEFAULT_Q;
-    const rng = mulberry32(hashStr(seedKey || q + cards.map(c => c.id + (c.rev ? 'r' : '')).join(',')));
+    const { ask, feel } = splitAsk(question);
+    const q = ask || DEFAULT_Q;
+    const feelText = [feel, (note || '').trim()].filter(Boolean).join('');
+    const rng = mulberry32(hashStr(seedKey || (question || '') + cards.map(c => c.id + (c.rev ? 'r' : '')).join(',')));
     const m = MOOD[mood], band = intensity <= 3 ? 0 : intensity <= 6 ? 1 : 2;
     const cat = CAT[category] || CAT.general;
     const drawn = drawnOf(cards, spread);
@@ -1536,12 +1552,13 @@ const Engine = (() => {
 
     out.push('### 此刻的你');
     const end = /[？?！!。]$/.test(q) ? '' : '。';
+    const askLine = ask || !feelText ? `你問：「${q}」${end}` : '你沒有特別提問，那就讓牌告訴你，今天最需要知道的是什麼。';
     const cues = (moodCues || []).slice(0, 3);
     let s;
-    if (moodSource === 'auto' && !cues.length) s = `你沒有特別寫下此刻的感受，那就先讓自己安靜下來，用平穩的心聆聽牌面。你問：「${q}」${end}`;
-    else if (moodSource === 'auto') s = `從你寫下的${cues.map(c => `「${c}」`).join('')}，感覺得到你此刻的「${m.label}」（強度 ${intensity}/10）。你問：「${q}」${end}${m.reflect[band]}`;
-    else s = `你帶著「${m.label}」的心情（強度 ${intensity}/10）來問：「${q}」${end}${m.reflect[band]}`;
-    if (note && note.trim() && !(moodSource === 'auto' && cues.length)) s += `你寫下的「${clip(note.trim(), 36)}」，也是這次解讀的一部分。`;
+    if (moodSource === 'auto' && !cues.length) s = (question || '').trim() ? `你沒有特別寫下此刻的感受，那就先讓自己安靜下來，用平穩的心聆聽牌面。${askLine}` : '你沒有特別寫下問題或感受，那就先讓自己安靜下來，聽聽牌面今天想告訴你的事。';
+    else if (moodSource === 'auto') s = `從你寫下的${cues.map(c => `「${c}」`).join('')}，感覺得到你此刻的「${m.label}」（強度 ${intensity}/10）。${askLine}${m.reflect[band]}`;
+    else s = ask || !feelText ? `你帶著「${m.label}」的心情（強度 ${intensity}/10）來問：「${q}」${end}${m.reflect[band]}` : `你帶著「${m.label}」的心情（強度 ${intensity}/10）來到這裡。${m.reflect[band]}${askLine}`;
+    if (feelText && !(moodSource === 'auto' && cues.length)) s += `你寫下的「${clip(feelText, 36)}」，也是這次解讀的一部分。`;
     out.push(s);
 
     out.push('', '### 牌面解析');
@@ -1553,7 +1570,7 @@ const Engine = (() => {
     out.push('', '### 綜合解讀');
     out.push(compositionLine(drawn) + arcLine(drawn, spread));
     out.push(CAT_SUIT_HINT[cat.id][key.card.s] + moodToneLine(m, avgTone));
-    if (isYesNo(q)) out.push(`**關於「是或否」：**${leaning(avgTone)}`);
+    if (ask && isYesNo(ask)) out.push(`**關於「是或否」：**${leaning(avgTone)}`);
 
     out.push('', '### 給你的建議');
     out.push(`- ${key.o.a}`);
@@ -1785,7 +1802,7 @@ const Engine = (() => {
 
   return {
     MOODS, MOOD, CATS, CAT, SPREADS, WEEK, DEFAULT_Q, EXPECTED,
-    detectCategory, analyzeMood, isYesNo, scoreOf, stepOf, orient, localReading, summaryOf, analyze, localInsight, statusOf, dailySeries, generateDemo,
+    detectCategory, analyzeMood, splitAsk, isYesNo, scoreOf, stepOf, orient, localReading, summaryOf, analyze, localInsight, statusOf, dailySeries, generateDemo,
     hashStr, mulberry32, ymd, parseYMD, addDays, daysBetween, weekdayOf, todayYMD, sign, pct, clip
   };
 })();
@@ -2211,7 +2228,7 @@ const Charts = (() => {
     const sp = SPREADS[ctx.spread];
     const lines = [
       `今天是 ${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日（${WEEK[d.getDay()]}）。`,
-      `問題：${ctx.question || '（沒有特定問題，想要一則今日指引）'}`,
+      `使用者寫下的問題與感受：${ctx.question || '（沒有寫任何內容，想要一則今日指引）'}`,
       `議題類別：${CAT[ctx.category].label}`,
       `牌陣：${sp.label}（${sp.positions.map(p => p.label).join('・')}）`,
       '抽到的牌：'
@@ -2306,6 +2323,20 @@ const Charts = (() => {
 
   /* ---------- 今日占卜 ---------- */
   const PROMPTS = ['今天需要特別注意什麼？', '這段關係接下來會怎麼發展？', '這個工作上的決定適合我嗎？', '最近的壓力，我可以怎麼面對？', '我現在最需要聽見的提醒是什麼？'];
+  // 灰字提示：示範「發生了什麼 → 心裡的感受 → 想問什麼」的寫法，每次開新占卜換一句
+  const EXAMPLES = [
+    '這週被主管退件兩次，覺得好挫折……我該怎麼調整自己的步調？',
+    '他最近常已讀不回，我有點不安。這段關係接下來會怎麼發展？',
+    '一直想報名陶藝課，但又擔心沒時間。要不要跨出這一步？',
+    '最近睡不好，整個人很疲憊。今天我最需要注意什麼？',
+    '剛結束一個大專案，鬆了一口氣，也有點空空的。下一步該往哪裡走？'
+  ];
+  let exampleIdx = Math.floor(Math.random() * EXAMPLES.length);
+  function nextPlaceholder() {
+    exampleIdx = (exampleIdx + 1) % EXAMPLES.length;
+    $('#question').placeholder = `寫下想問的事，也可以說說發生了什麼、心裡有什麼感受。\n例如：${EXAMPLES[exampleIdx]}`;
+  }
+  const qCountText = () => `${$('#question').value.length} / ${$('#question').maxLength}`;
   const intWord = v => (v <= 2 ? '輕微' : v <= 4 ? '有一點' : v <= 6 ? '中等' : v <= 8 ? '強烈' : '非常強烈');
   const newReading = spread => ({ phase: 'idle', spread: spread || 'single', fan: [], picked: [], result: null, saved: false, abort: null, ctx: null, entryId: null });
   const moodSource = () => (S.form.claude ? 'claude' : S.form.moodManual || S.form.intManual ? 'manual' : 'auto');
@@ -2316,6 +2347,7 @@ const Charts = (() => {
     $('#promptChips').innerHTML = PROMPTS.map(p => `<button type="button" class="chip chip-suggest" data-prompt="${esc(p)}">${esc(p)}</button>`).join('');
     $('#catChips').innerHTML = CATS.map(c => `<button type="button" class="chip" role="radio" data-cat="${c.id}">${c.label}</button>`).join('');
     $('#moodGrid').innerHTML = MOODS.map(m => `<button type="button" class="mood" role="radio" data-mood="${m.id}" aria-label="${m.label}">${face(m.id, 30)}<span>${m.label}</span></button>`).join('');
+    nextPlaceholder();
     analyzeNow();
     renderStage();
   }
@@ -2324,20 +2356,20 @@ const Charts = (() => {
   let analyzeTimer = 0;
   function analyzeNow() {
     clearTimeout(analyzeTimer);
-    const f = S.form, q = $('#question').value.trim(), note = $('#note').value.trim();
-    f.auto = E.analyzeMood([q, note].filter(Boolean).join('。'));
-    f.hasText = !!(q || note);
+    const f = S.form, q = $('#question').value.trim();
+    f.auto = E.analyzeMood(q);
+    f.hasText = !!q;
     if (!f.claude) {
       if (!f.moodManual) f.mood = f.auto.mood;
       if (!f.intManual) f.intensity = f.auto.intensity;
     }
-    if (!f.catManual) { const cq = E.detectCategory(q); f.cat = cq === 'general' && note ? E.detectCategory(note) : cq; }
+    if (!f.catManual) f.cat = E.detectCategory(q);
     syncForm();
   }
   function scheduleAnalysis() {
     clearTimeout(analyzeTimer);
     analyzeTimer = setTimeout(analyzeNow, 220);
-    $('#qCount').textContent = `${$('#question').value.length} / 120`;
+    $('#qCount').textContent = qCountText();
     updateDeckHint();
   }
   function renderAutoCard() {
@@ -2365,12 +2397,11 @@ const Charts = (() => {
     $('#intWord').textContent = intWord(f.intensity);
     $('#intensity').value = f.intensity;
     $('#intensity').style.setProperty('--p', ((f.intensity - 1) / 9 * 100).toFixed(1) + '%');
-    $('#qCount').textContent = `${$('#question').value.length} / 120`;
+    $('#qCount').textContent = qCountText();
     renderAutoCard();
   }
   function lockForm(on) {
     $('#question').readOnly = on;
-    $('#note').readOnly = on;
     $$('#promptChips .chip, #catChips .chip, #moodGrid .mood, #spreadOpts .spread').forEach(b => { b.disabled = on; });
     $('#intensity').disabled = on;
     $('#adjustBtn').disabled = on;
@@ -2389,7 +2420,7 @@ const Charts = (() => {
     $('#weekStrip').innerHTML = h;
   }
 
-  const deckHint = () => ($('#question').value.trim() || $('#note').value.trim() ? '準備好了，就<b>點一下牌堆</b>開始洗牌' : '還沒寫問題也沒關係，<b>點一下牌堆</b>，就是今天的指引');
+  const deckHint = () => ($('#question').value.trim() ? '準備好了，就<b>點一下牌堆</b>開始洗牌' : '還沒寫也沒關係，<b>點一下牌堆</b>就是今日指引');
   function updateDeckHint() { const h = $('#deckHint'); if (h && S.r.phase === 'idle') h.innerHTML = deckHint(); }
   function renderStage() {
     const r = S.r, need = SPREADS[r.spread].positions.length;
@@ -2518,7 +2549,7 @@ const Charts = (() => {
       date: E.ymd(now), time: `${pad(now.getHours())}:${pad(now.getMinutes())}`,
       question: $('#question').value.trim(), category: S.form.cat, spread: S.r.spread,
       cards: S.r.picked.map(c => ({ id: c.id, rev: c.rev })), mood: S.form.mood, intensity: S.form.intensity,
-      note: $('#note').value.trim(), moodSource: src, moodCues: src === 'auto' && S.form.auto ? S.form.auto.cues.slice() : []
+      note: '', moodSource: src, moodCues: src === 'auto' && S.form.auto ? S.form.auto.cues.slice() : []
     };
   }
   function renderPanelMeta(ctx) {
@@ -2532,6 +2563,7 @@ const Charts = (() => {
     const ctx = currentCtx();
     r.ctx = ctx;
     $('#rpQ').textContent = `「${ctx.question || E.DEFAULT_Q}」`;
+    $('#rpQ').classList.toggle('long', ctx.question.length > 40);
     renderPanelMeta(ctx);
     $('#readingPanel').hidden = false;
     $('#saveBtn').disabled = true;
@@ -2627,7 +2659,7 @@ const Charts = (() => {
     if (S.r && S.r.abort) S.r.abort.abort();
     const spread = S.r ? S.r.spread : 'single';
     S.r = newReading(spread);
-    if (clearInputs) { $('#question').value = ''; $('#note').value = ''; S.form.moodManual = S.form.intManual = S.form.catManual = false; }
+    if (clearInputs) { $('#question').value = ''; S.form.moodManual = S.form.intManual = S.form.catManual = false; nextPlaceholder(); }
     S.form.claude = null;
     lockForm(false);
     $('#readingPanel').hidden = true;
@@ -2975,7 +3007,6 @@ const Charts = (() => {
 
     const q = $('#question');
     q.addEventListener('input', scheduleAnalysis);
-    $('#note').addEventListener('input', scheduleAnalysis);
     $('#adjustBtn').addEventListener('click', () => {
       const panel = $('#adjustPanel'), open = panel.hidden;
       panel.hidden = !open;
@@ -2985,7 +3016,10 @@ const Charts = (() => {
     $('#autoResetBtn').addEventListener('click', () => { S.form.moodManual = S.form.intManual = S.form.catManual = false; S.form.claude = null; analyzeNow(); });
     $('#promptChips').addEventListener('click', ev => {
       const b = ev.target.closest('[data-prompt]'); if (!b || b.disabled) return;
-      q.value = b.dataset.prompt; q.dispatchEvent(new Event('input')); q.focus();
+      const cur = q.value.trim(), p = b.dataset.prompt;
+      const next = !cur ? p : cur.includes(p) ? cur : cur + (/[。！？!?…，,；;]$/.test(cur) ? '' : '。') + p;
+      if (next.length <= q.maxLength) q.value = next;
+      q.dispatchEvent(new Event('input')); q.focus();
     });
     radioGroup($('#catChips'), '.chip', b => { S.form.cat = b.dataset.cat; S.form.catManual = true; syncForm(); });
     radioGroup($('#moodGrid'), '.mood', b => { S.form.mood = b.dataset.mood; S.form.moodManual = true; S.form.claude = null; syncForm(); });
