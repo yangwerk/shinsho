@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>心象塔羅日誌</title>
+<title>心象塔羅日誌・普普風</title>
 <meta name="description" content="結合塔羅占卜與心情紀錄的個人儀表板：每天抽牌、記錄心情與情緒強度，並從歷史紀錄中整理出反覆出現的生活議題。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2220%22%20r%3D%2219%22%20fill%3D%22%230077d0%22%20stroke%3D%22%230077d0%22%20stroke-width%3D%221.5%22/%3E%3Cpath%20d%3D%22M23%2011.2A9.2%209.2%200%201%200%2023%2028.8A9.2%209.2%200%200%201%2023%2011.2Z%22%20fill%3D%22%23ffd56e%22/%3E%3Cpath%20d%3D%22M27%2013.5l.9%202.2%202.2.9-2.2.9-.9%202.2-.9-2.2-2.2-.9%202.2-.9z%22%20fill%3D%22%23ffd56e%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,9 +123,6 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .icon-btn svg { width: 18px; height: 18px; }
 .bottomnav { display: none; }
 
-.demo-banner { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; margin-top: 14px; padding: 10px 14px; border-radius: 12px; background: var(--gold-soft); border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); font-size: 13.5px; color: var(--ink); }
-.demo-banner svg { width: 18px; height: 18px; color: var(--gold-ink); flex: none; }
-.demo-banner p { margin: 0; flex: 1 1 260px; }
 main { padding-block: 22px 56px; }
 
 /* ---------- 共用元件 ---------- */
@@ -708,8 +705,6 @@ body { letter-spacing: .03em; }
 .streak { background: var(--surface-2); border: 0; color: var(--title); padding: 7px 13px; }
 .streak svg { color: var(--apricot); }
 .streak b { color: var(--title); font-family: var(--font-latin); }
-.demo-banner { background: var(--surface-2); border: 0; border-radius: 24px; color: var(--title); padding: 12px 14px 12px 20px; }
-.demo-banner svg { color: var(--apricot); }
 
 /* ---------- 按鈕、標籤、輸入框 ---------- */
 .btn { border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--title); letter-spacing: .08em; }
@@ -890,14 +885,6 @@ textarea:focus, input:focus, select:focus { border-color: var(--blue); box-shado
     </div>
   </div>
 </header>
-
-<div class="wrap">
-  <div class="demo-banner" id="demoBanner" hidden>
-    <svg><use href="#i-info"/></svg>
-    <p id="demoText"></p>
-    <button class="btn btn-sm" id="clearDemoBtn" type="button">清除示範資料</button>
-  </div>
-</div>
 
 <main class="wrap">
   <!-- 今日占卜 -->
@@ -1144,8 +1131,6 @@ textarea:focus, input:focus, select:focus { border-color: var(--blue); box-shado
           <input type="file" id="importFile" accept="application/json,.json" hidden>
         </div>
         <div class="row">
-          <button class="btn btn-sm" id="reloadDemoBtn" type="button">重新載入示範資料</button>
-          <button class="btn btn-sm btn-danger" id="clearDemo2Btn" type="button">清除示範資料</button>
           <button class="btn btn-sm btn-danger" id="clearAllBtn" type="button">清除所有紀錄</button>
         </div>
       </div>
@@ -1470,7 +1455,7 @@ const Tarot = (() => {
   return { DECK, SUITS, SUIT_ORDER, face, BACK_SVG, suitIcon, EL_INK };
 })();
 
-/* ============ 解讀引擎：心情、議題、離線解讀、歷史分析、示範資料 ============ */
+/* ============ 解讀引擎：心情、議題、離線解讀、歷史分析 ============ */
 const Engine = (() => {
   const { DECK, SUITS } = Tarot;
 
@@ -1975,77 +1960,9 @@ const Engine = (() => {
     return { text: out.join('\n'), status: statusOf(st) };
   }
 
-  /* ---------- 示範資料（約 60 天的故事線） ---------- */
-  const DEMO_PHASES = [
-    {
-      from: 60, to: 44, rev: 0.3, int: [4, 7], moods: { hope: 3, anxious: 3, calm: 2, joy: 1, tired: 1 }, bias: [1, 7, 22, 23, 24, 66, 4, 9, 29],
-      qs: ['新專案剛開始，我該注意什麼？', '新主管的風格，我能適應嗎？', '這次被指派當專案負責人，我能勝任嗎？', '要怎麼和新團隊建立默契？', '今天的工作會議會順利嗎？', '我對這個專案的期待會實現嗎？', '今天需要特別注意什麼？'],
-      notes: ['新專案開工，會議排滿一整天', '新主管說話很直接，還在適應', '被指派當負責人，有點興奮也有點怕', '跟團隊一起吃午餐，大家人都不錯', '晚上回家還在想明天的簡報']
-    },
-    {
-      from: 43, to: 27, rev: 0.5, int: [6, 9], moods: { anxious: 4, tired: 4, irritated: 3, sad: 1, lost: 1 }, bias: [58, 57, 59, 31, 16, 18, 9, 30, 54, 65, 51],
-      qs: ['專案能在期限內上線嗎？', '主管是不是對我的表現不滿意？', '我是不是該開始考慮換工作了？', '最近一直失眠，身體在提醒我什麼？', '壓力這麼大的時候，我可以怎麼調整？', '和同事的摩擦該怎麼處理？', '這週的加班還要撐多久？', '我是不是太在意別人的評價了？'],
-      notes: ['今天被退件兩次，好挫折', '又加班到十點，只想趕快睡覺', '凌晨三點醒來就睡不著了', '主管在會議上當眾質疑我的規劃', '和同事為了分工吵了一架', '連續第四天吃便利商店晚餐', '週末也在回訊息，覺得好累', '終於把第一版交出去了']
-    },
-    {
-      from: 26, to: 8, rev: 0.4, int: [4, 8], moods: { lost: 4, sad: 3, hope: 2, anxious: 2, calm: 1 }, bias: [37, 40, 42, 6, 18, 9, 39, 43, 2, 47],
-      qs: ['他最近變得冷淡，是我想太多了嗎？', '我和他的關係接下來會怎麼發展？', '要不要主動約他把話說清楚？', '這段感情還值得我繼續付出嗎？', '為什麼我總是在關係裡感到不安？', '專案結束後，我的下一步是什麼？', '我真正想要的是什麼？'],
-      notes: ['專案上線了，但心裡空空的', '他已讀不回一整天', '和他講電話，氣氛有點冷', '看到朋友的婚禮照片，心情很複雜', '一個人去看了電影', '他主動約我週末吃飯', '跟小芸聊到半夜，被安慰了']
-    },
-    {
-      from: 7, to: 1, rev: 0.25, int: [4, 8], moods: { calm: 4, joy: 3, hope: 3, tired: 1 }, bias: [17, 14, 19, 41, 24, 72, 53, 38, 9, 3, 21],
-      qs: ['我該怎麼好好休息，找回生活的節奏？', '下個月的花蓮旅行會順利嗎？', '要不要報名一直想上的陶藝課？', '如何和家人好好溝通我的決定？', '今天需要特別注意什麼？', '接下來一個月的整體運勢如何？', '我可以怎麼維持現在的好狀態？', '這筆存款要先拿來進修，還是去旅行？'],
-      notes: ['睡了七個小時，久違的好眠', '早上去河濱散步，天氣很好', '報名了陶藝體驗課', '跟媽媽好好聊了一次', '訂好了花蓮的民宿', '下班後去上瑜伽，身體鬆了很多', '和他把話說清楚了，心裡輕鬆不少', '專案檢討會上被主管稱讚']
-    }
-  ];
-
-  function weightedPick(rng, weights) {
-    const entries = Object.entries(weights); const total = entries.reduce((a, [, w]) => a + w, 0);
-    let r = rng() * total;
-    for (const [k, w] of entries) { r -= w; if (r <= 0) return k; }
-    return entries[entries.length - 1][0];
-  }
-
-  function generateDemo(today) {
-    const rng = mulberry32(20260929);
-    const entries = [];
-    const used = DEMO_PHASES.map(p => {
-      const order = p.qs.map((_, i) => i);
-      for (let i = order.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
-      return { q: 0, n: 0, order };
-    });
-    for (let ago = 60; ago >= 1; ago--) {
-      const pi = DEMO_PHASES.findIndex(p => ago <= p.from && ago >= p.to);
-      const ph = DEMO_PHASES[pi];
-      if (ago > 9 && rng() < 0.18) continue;
-      const count = rng() < 0.12 ? 2 : 1;
-      const date = addDays(today, -ago);
-      for (let k = 0; k < count; k++) {
-        const r = rng();
-        const spread = r < 0.6 ? 'single' : r < 0.85 ? 'ppf' : 'sca';
-        const need = spread === 'single' ? 1 : 3;
-        const cards = [];
-        while (cards.length < need) {
-          const id = rng() < 0.5 ? pick(rng, ph.bias) : Math.floor(rng() * 78);
-          if (!cards.some(c => c.id === id)) cards.push({ id, rev: rng() < ph.rev });
-        }
-        const mood = weightedPick(rng, ph.moods);
-        const intensity = Math.max(1, Math.min(10, ph.int[0] + Math.floor(rng() * (ph.int[1] - ph.int[0] + 1)) + (MOOD[mood].v > 0 && ph.from > 40 ? -1 : 0)));
-        const question = ph.qs[used[pi].order[used[pi].q++ % ph.qs.length]];
-        const note = rng() < 0.55 ? ph.notes[used[pi].n++ % ph.notes.length] : '';
-        const hh = k === 0 ? 7 + Math.floor(rng() * 6) : 19 + Math.floor(rng() * 4);
-        const time = `${pad(hh)}:${pad(Math.floor(rng() * 60))}`;
-        const category = detectCategory(question);
-        const reading = localReading({ question, category, spread, cards, mood, intensity, note, seedKey: date + time });
-        entries.push({ id: `demo-${date}-${k}`, date, time, question, category, spread, cards, mood, intensity, note, reading: reading.text, summary: reading.summary, engine: 'local', demo: true });
-      }
-    }
-    return entries;
-  }
-
   return {
     MOODS, MOOD, CATS, CAT, SPREADS, WEEK, DEFAULT_Q, EXPECTED,
-    detectCategory, analyzeMood, splitAsk, isYesNo, scoreOf, stepOf, orient, localReading, summaryOf, analyze, localInsight, statusOf, dailySeries, generateDemo,
+    detectCategory, analyzeMood, splitAsk, isYesNo, scoreOf, stepOf, orient, localReading, summaryOf, analyze, localInsight, statusOf, dailySeries,
     hashStr, mulberry32, ymd, parseYMD, addDays, daysBetween, weekdayOf, todayYMD, sign, pct, clip
   };
 })();
@@ -2372,7 +2289,7 @@ const Charts = (() => {
 
   const S = {
     entries: [],
-    settings: { theme: 'system', engine: 'local', rememberKey: false, demoCleared: false },
+    settings: { theme: 'system', engine: 'local', rememberKey: false },
     apiKey: '',
     tab: 'reading',
     dashRange: 30,
@@ -2387,7 +2304,8 @@ const Charts = (() => {
   const saveSettings = () => store.set(KEYS.settings, S.settings);
 
   function cleanEntry(e) {
-    if (!e || typeof e !== 'object' || !/^\d{4}-\d{2}-\d{2}$/.test(e.date) || !MOOD[e.mood] || !Array.isArray(e.cards)) return null;
+    // 舊版的示範紀錄（demo: true）在讀取或匯入時一律捨棄
+    if (!e || typeof e !== 'object' || e.demo || !/^\d{4}-\d{2}-\d{2}$/.test(e.date) || !MOOD[e.mood] || !Array.isArray(e.cards)) return null;
     const cards = e.cards.filter(c => c && Number.isInteger(c.id) && c.id >= 0 && c.id < 78).map(c => ({ id: c.id, rev: !!c.rev }));
     if (cards.length !== 1 && cards.length !== 3) return null;
     const spread = SPREADS[e.spread] && SPREADS[e.spread].positions.length === cards.length ? e.spread : (cards.length === 1 ? 'single' : 'ppf');
@@ -2398,7 +2316,7 @@ const Charts = (() => {
       category: CAT[e.category] ? e.category : E.detectCategory(question), spread, cards, mood: e.mood,
       intensity: Math.max(1, Math.min(10, Math.round(+e.intensity || 5))), note: String(e.note || '').slice(0, 600),
       reading: String(e.reading || '').slice(0, 20000), summary: String(e.summary || E.summaryOf(cards, spread)).slice(0, 200),
-      engine: e.engine === 'claude' ? 'claude' : 'local', demo: !!e.demo,
+      engine: e.engine === 'claude' ? 'claude' : 'local',
       moodSource: ['auto', 'manual', 'claude'].includes(e.moodSource) ? e.moodSource : undefined,
       moodCues: Array.isArray(e.moodCues) ? e.moodCues.slice(0, 4).map(x => String(x).slice(0, 20)) : undefined
     };
@@ -2576,9 +2494,6 @@ const Charts = (() => {
     const s = streakOf();
     $('#streakNum').textContent = s.n;
     $('#streakChip').title = s.today ? `已經連續記錄 ${s.n} 天` : s.n ? `已經連續 ${s.n} 天，今天抽一張牌就能延續` : '今天開始記錄吧';
-    const demo = S.entries.filter(e => e.demo).length;
-    $('#demoBanner').hidden = !demo;
-    $('#demoText').textContent = `這裡先放了 ${demo} 筆示範紀錄（約兩個月），讓你看看累積之後的圖表與 AI 洞察。開始記錄自己的心情後，可以一鍵清除。`;
   }
 
   /* ---------- 單選群組（支援方向鍵） ---------- */
@@ -2923,7 +2838,7 @@ const Charts = (() => {
     const r = S.r;
     if (!r || !r.result || r.saved) return;
     const ctx = r.ctx;
-    const entry = cleanEntry({ ...ctx, id: 'e' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), reading: r.result.text, summary: r.result.summary, engine: r.result.engine, demo: false });
+    const entry = cleanEntry({ ...ctx, id: 'e' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), reading: r.result.text, summary: r.result.summary, engine: r.result.engine });
     S.entries.push(entry);
     persist();
     r.saved = true; r.entryId = entry.id;
@@ -3120,7 +3035,7 @@ const Charts = (() => {
   function renderJournal() {
     const j = S.j;
     if (!j.month) { const d = new Date(); j.month = { y: d.getFullYear(), m: d.getMonth() }; }
-    $('#jSub').textContent = `共 ${S.entries.length} 筆紀錄${S.entries.some(e => e.demo) ? '（含示範資料）' : ''}`;
+    $('#jSub').textContent = `共 ${S.entries.length} 筆紀錄`;
     renderCalendar();
     renderList();
   }
@@ -3160,7 +3075,7 @@ const Charts = (() => {
       const mk = e.date.slice(0, 7);
       if (mk !== cur) { cur = mk; h += `<li class="month-sep">${+mk.slice(0, 4)} 年 ${+mk.slice(5)} 月</li>`; }
       const dt = E.parseYMD(e.date);
-      h += `<li><button type="button" class="entry-btn" data-id="${esc(e.id)}"><div class="entry-date"><b>${dt.getMonth() + 1}/${dt.getDate()}</b><span>${WEEK[dt.getDay()]}</span></div><div style="min-width:0"><div class="entry-q">${esc(e.question || E.DEFAULT_Q)}</div><div class="entry-meta"><span class="tag">${face(e.mood, 15)}${MOOD[e.mood].label} ${e.intensity}</span><span class="tag">${CAT[e.category].label}</span>${e.engine === 'claude' ? '<span class="tag tag-gold">Claude</span>' : ''}${e.demo ? '<span class="tag">示範</span>' : ''}</div></div><div class="entry-cards">${e.cards.map(c => mini(c)).join('')}</div></button></li>`;
+      h += `<li><button type="button" class="entry-btn" data-id="${esc(e.id)}"><div class="entry-date"><b>${dt.getMonth() + 1}/${dt.getDate()}</b><span>${WEEK[dt.getDay()]}</span></div><div style="min-width:0"><div class="entry-q">${esc(e.question || E.DEFAULT_Q)}</div><div class="entry-meta"><span class="tag">${face(e.mood, 15)}${MOOD[e.mood].label} ${e.intensity}</span><span class="tag">${CAT[e.category].label}</span>${e.engine === 'claude' ? '<span class="tag tag-gold">Claude</span>' : ''}</div></div><div class="entry-cards">${e.cards.map(c => mini(c)).join('')}</div></button></li>`;
     });
     $('#entryList').innerHTML = h || '<li class="empty">沒有符合條件的紀錄。</li>';
     $('#moreBtn').hidden = list.length <= S.j.limit;
@@ -3180,7 +3095,7 @@ const Charts = (() => {
     const dt = E.parseYMD(e.date), sp = SPREADS[e.spread];
     $('#entryTitle').textContent = `${dt.getFullYear()} 年 ${dt.getMonth() + 1} 月 ${dt.getDate()} 日（${WEEK[dt.getDay()]}）${e.time}`;
     $('#entryBody').innerHTML = `
-      <div><p class="rp-q">「${esc(e.question || E.DEFAULT_Q)}」</p><div class="rp-meta" style="margin-top:8px"><span class="tag">${face(e.mood, 15)}${MOOD[e.mood].label} ${e.intensity}/10${e.moodSource ? `<span class="tag-sub">・${{ auto: '自動判讀', claude: 'Claude 判讀', manual: '手動' }[e.moodSource]}</span>` : ''}</span><span class="tag">情緒指數 ${sign(E.scoreOf(e))}</span><span class="tag">${CAT[e.category].label}</span><span class="tag">${sp.label}</span><span class="tag tag-gold">${e.engine === 'claude' ? 'Claude Opus 5.5' : '內建解讀引擎'}</span>${e.demo ? '<span class="tag">示範資料</span>' : ''}</div></div>
+      <div><p class="rp-q">「${esc(e.question || E.DEFAULT_Q)}」</p><div class="rp-meta" style="margin-top:8px"><span class="tag">${face(e.mood, 15)}${MOOD[e.mood].label} ${e.intensity}/10${e.moodSource ? `<span class="tag-sub">・${{ auto: '自動判讀', claude: 'Claude 判讀', manual: '手動' }[e.moodSource]}</span>` : ''}</span><span class="tag">情緒指數 ${sign(E.scoreOf(e))}</span><span class="tag">${CAT[e.category].label}</span><span class="tag">${sp.label}</span><span class="tag tag-gold">${e.engine === 'claude' ? 'Claude Opus 5.5' : '內建解讀引擎'}</span></div></div>
       <div class="detail-cards">${e.cards.map((c, i) => `<div class="detail-card">${mini(c, true)}<span>${sp.positions[i].label}<br><b>${esc(DECK[c.id].name)}</b><small>${c.rev ? '逆位' : '正位'}</small></span></div>`).join('')}</div>
       ${e.note ? `<div class="field"><span class="label">當天的筆記</span><p class="note-quote">${esc(e.note)}</p></div>` : ''}
       <div class="md">${md(e.reading || '（這筆紀錄沒有保存解讀內容）')}</div>
@@ -3222,8 +3137,7 @@ const Charts = (() => {
     $('#apiKey').value = S.apiKey;
     $('#rememberKey').checked = !!S.settings.rememberKey;
     $('#keyStatus').textContent = ''; $('#keyStatus').className = 'key-status';
-    const demo = S.entries.filter(e => e.demo).length;
-    $('#dataInfo').textContent = `目前共有 ${S.entries.length} 筆紀錄${demo ? `，其中 ${demo} 筆是示範資料` : ''}。紀錄只存在這個瀏覽器裡，換電腦或清除瀏覽資料之前，記得先匯出備份。` + (store.ok ? '' : '注意：這個瀏覽器目前不允許儲存資料，關閉頁面後紀錄就會消失。');
+    $('#dataInfo').textContent = `目前共有 ${S.entries.length} 筆紀錄。紀錄只存在這個瀏覽器裡，換電腦或清除瀏覽資料之前，記得先匯出備份。` + (store.ok ? '' : '注意：這個瀏覽器目前不允許儲存資料，關閉頁面後紀錄就會消失。');
     openModal('#settingsModal');
     if (claude) setTimeout(() => $('#apiKey').focus(), 50);
     refreshEngineUI();
@@ -3265,14 +3179,6 @@ const Charts = (() => {
       openSettings(false); renderAll();
     } catch (e) { toast('這個檔案不是有效的備份檔'); }
   }
-  function clearDemo() {
-    const n = S.entries.filter(e => e.demo).length;
-    S.entries = S.entries.filter(e => !e.demo); persist();
-    S.settings.demoCleared = true; saveSettings(); S.insCache = {};
-    toast(n ? `已清除 ${n} 筆示範資料` : '沒有示範資料');
-    if (!$('#settingsModal').hidden) openSettings(false);
-    renderAll();
-  }
 
   /* ---------- 事件 ---------- */
   function bind() {
@@ -3282,7 +3188,6 @@ const Charts = (() => {
     $('#themeBtn').addEventListener('click', () => { S.settings.theme = isDark() ? 'light' : 'dark'; saveSettings(); applyTheme(); });
     darkMQ.addEventListener('change', applyTheme);
     $('#settingsBtn').addEventListener('click', () => openSettings(false));
-    $('#clearDemoBtn').addEventListener('click', clearDemo);
 
     const q = $('#question');
     q.addEventListener('input', scheduleAnalysis);
@@ -3370,16 +3275,10 @@ const Charts = (() => {
     $('#exportBtn').addEventListener('click', exportData);
     $('#importBtn').addEventListener('click', () => $('#importFile').click());
     $('#importFile').addEventListener('change', ev => { const f = ev.target.files[0]; if (f) importData(f); ev.target.value = ''; });
-    $('#clearDemo2Btn').addEventListener('click', ev => armConfirm(ev.currentTarget, '再按一次確認', clearDemo));
     $('#clearAllBtn').addEventListener('click', ev => armConfirm(ev.currentTarget, '再按一次確認清除全部', () => {
-      S.entries = []; persist(); S.settings.demoCleared = true; saveSettings(); S.insCache = {};
+      S.entries = []; persist(); S.insCache = {};
       toast('已清除所有紀錄'); openSettings(false); renderAll();
     }));
-    $('#reloadDemoBtn').addEventListener('click', () => {
-      S.entries = S.entries.filter(e => !e.demo).concat(E.generateDemo(E.todayYMD())); persist();
-      S.settings.demoCleared = false; saveSettings(); S.insCache = {};
-      toast('已重新載入示範資料'); openSettings(false); renderAll();
-    });
 
     let rt = 0, lastW = innerWidth;
     window.addEventListener('resize', () => {
@@ -3399,14 +3298,8 @@ const Charts = (() => {
     document.documentElement.style.setProperty('--card-back', Tarot.BACK_SVG);
     S.settings = Object.assign(S.settings, store.get(KEYS.settings, {}));
     if (!['system', 'light', 'dark'].includes(S.settings.theme)) S.settings.theme = 'system';
-    const today = E.todayYMD();
-    let entries = store.get(KEYS.entries, null);
-    if (!Array.isArray(entries)) entries = S.settings.demoCleared ? [] : E.generateDemo(today);
-    else if (entries.length && entries.every(e => e && e.demo)) {
-      const last = entries.reduce((m, e) => (e.date > m ? e.date : m), '0000-00-00');
-      if (E.daysBetween(last, today) > 1) entries = E.generateDemo(today);
-    }
-    S.entries = entries.map(cleanEntry).filter(Boolean);
+    const entries = store.get(KEYS.entries, []);
+    S.entries = (Array.isArray(entries) ? entries : []).map(cleanEntry).filter(Boolean);
     persist();
     if (S.settings.rememberKey) S.apiKey = String(store.get(KEYS.key, '') || '');
     S.r = newReading('single');
